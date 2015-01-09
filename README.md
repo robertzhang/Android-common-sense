@@ -1,7 +1,7 @@
 # Android-common-sense
 Android common sense (notes).It is a base note for myself to android develop
 
-###关于dp，dip，dpi，px，sp，以及layout-xxxdpi和layout-xxxdp的简单记录。
+### 关于dp，dip，dpi，px，sp，以及layout-xxxdpi和layout-xxxdp的简单记录。
 ======
 
   1、dpi（dot per inch）,即每英寸像素，所有的android设备都会被分成120（low）,160(medium),240(high),320(xhigh)四种，后来随着市场上android设备越来越多，google官方又增加了213（Added in API level13）,480（Added in API level16）,640（Added in API level18）,三种dpi。比如320*240分辨率的屏幕物理尺寸2英寸*1.5英寸，dpi=160；
@@ -21,5 +21,6 @@ Android common sense (notes).It is a base note for myself to android develop
 第三种后缀h<N>dp 如layout-h600dp, values-h600dp
   这个后缀的使用方式和w<N>dp一样，随着屏幕横纵向的变化，屏幕高度也会变化，根据变化后的高度值来判断是否使用h<N>dp ，但这种方式很少使用，因为屏幕在纵向上通常能够滚动导致长度变化，不像宽度那样基本固定，因为这个方法灵活性不是很好，google官方文档建议尽量少使用这种方式。
   
-  ps:以上为个人帮助记忆的note，若有不当的理解希望不会误导他人。
-  ps2：部分内容有借用，没有贴出链接是因为我也不清楚他是否为原帖，请原帖主人多见谅。
+###### ps:以上为个人帮助记忆的note，若有不当的理解希望不会误导他人。
+  
+###### ps2：部分内容有借用，没有贴出链接是因为我也不清楚他是否为原帖，请原帖主人多见谅。
