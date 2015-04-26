@@ -35,6 +35,26 @@ View的职责，根据测量模式和ViewGroup给出的建议的宽和高，计�
 3、ViewGroup和LayoutParams之间的关系
 
 大家可以回忆一下，当在LinearLayout中写childView的时候，可以写layout_gravity，layout_weight属性；在RelativeLayout中的childView有layout_centerInParent属性，却没有layout_gravity，layout_weight，这是为什么呢？这是因为每个ViewGroup需要指定一个LayoutParams，用于确定支持childView支持哪些属性，比如LinearLayout指定LinearLayout.LayoutParams等。如果大家去看LinearLayout的源码，会发现其内部定义了LinearLayout.LayoutParams，在此类中，你可以发现weight和gravity的身影。
+
+4、View的3种测量模式
+
+上面提到了ViewGroup会为childView指定测量模式，下面简单介绍下三种测量模式：
+
+* EXACTLY：表示设置了精确的值，一般当childView设置其宽、高为精确值、match_parent时，ViewGroup会将其设置为EXACTLY；
+
+* AT_MOST：表示子布局被限制在一个最大值内，一般当childView设置其宽、高为wrap_content时，ViewGroup会将其设置为AT_MOST；
+
+* UNSPECIFIED：表示子布局想要多大就多大，一般出现在AadapterView的item的heightMode中、ScrollView的childView的heightMode中；此种模式比较少见。
+
+注：上面的每一行都有一个一般，意思上述不是绝对的，对于childView的mode的设置还会和ViewGroup的测量mode有一定的关系；当然了，这是第一篇自定义ViewGroup，而且绝大部分情况都是上面的规则，所以为了通俗易懂，暂不深入讨论其他内容。
+
+5、从API角度进行浅析
+
+上面叙述了ViewGroup和View的职责，下面从API角度进行浅析。
+
+View的根据ViewGroup传人的测量值和模式，对自己宽高进行确定（onMeasure中完成），然后在onDraw中完成对自己的绘制。
+
+ViewGroup需要给View传入view的测量值和模式（onMeasure中完成），而且对于此ViewGroup的父布局，自己也需要在onMeasure中完成对自己宽和高的确定。此外，需要在onLayout中完成对其childView的位置的指定。
   
 ###### ps: 以上为个人帮助记忆的note，若有不当的理解希望不会误导他人。
   
